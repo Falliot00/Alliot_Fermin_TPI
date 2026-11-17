@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #173d35;
+  --color-brand: #173d35;
+  --color-brand-hover: #245347;
+  --color-surface: #fffefb;
+  --color-accent-surface: #e7eee9;
+  --color-error-surface: #fef2f2;
+  --color-danger: #b91c1c;
+  --font-sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+:root {
+  color-scheme: light;
+  font-family: var(--font-sans);
+  color: #292524;
+  background: #f7f6f0;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+}
+
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+:focus-visible {
+  outline: 3px solid #316553;
+  outline-offset: 3px;
+}
+::selection {
+  color: white;
+  background: #173d35;
+}
+
+@layer components {
+  .page-title {
+    @apply font-serif text-4xl tracking-tight text-forest sm:text-5xl;
+  }
+  .state-panel {
+    @apply flex min-h-56 flex-col items-center justify-center gap-4 rounded-2xl border border-stone-200 bg-surface p-8 text-center;
+  }
+  .badge-available {
+    @apply inline-block whitespace-nowrap rounded-full bg-accent-surface px-3 py-1 text-xs font-medium text-forest;
+  }
+  .badge-unavailable {
+    @apply inline-block whitespace-nowrap rounded-full bg-stone-100 px-3 py-1 text-xs font-medium text-stone-600;
+  }
+  .btn-primary {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-hover;
+  }
+  .btn-secondary {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-stone-200 bg-surface px-4 py-2.5 text-sm font-medium text-stone-700 transition-colors hover:bg-stone-50;
+  }
+  .btn-danger {
+    @apply inline-flex min-h-11 items-center justify-center rounded-xl bg-red-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-800;
+  }
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-stone-700;
+  }
+  .field {
+    @apply block w-full rounded-xl border border-stone-300 bg-surface px-3 py-2.5 text-stone-800 placeholder:text-stone-500;
+  }
+  .nav-link {
+    @apply inline-flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-medium text-stone-700 hover:bg-accent-surface;
+  }
+  .nav-link[aria-current="page"] {
+    @apply bg-accent-surface font-semibold text-forest;
+  }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(520px, calc(100% - 32px));
+  max-height: calc(100dvh - 40px);
+  overflow: auto;
+  border-radius: 16px;
+  padding: clamp(16px, 4vw, 32px);
+  background: var(--color-surface);
+  box-shadow: 0 24px 90px #0002;
+}
+.modal::backdrop {
+  background: #14272180;
+}
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.spinner {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--color-stone-200);
+  border-top-color: var(--color-forest);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
