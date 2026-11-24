@@ -5,7 +5,7 @@ Trabajo Práctico Integrador de Programación IV · Fermín Alliot
 Food Store permite consultar un catálogo de comidas, armar un carrito y hacer pedidos con entrega y pago manual. El panel de administración gestiona categorías, productos, stock, pedidos y usuarios.
 
 - [Repositorio público de GitHub (CE-01)](https://github.com/Falliot00/Alliot_Fermin_TPI)
-- Video público de 10 a 15 minutos (CE-07) — pendiente de grabación y publicación.
+- [Video de presentación (CE-07)](https://youtu.be/Fh7DxLgVR5E)
 
 ## Requisitos
 
